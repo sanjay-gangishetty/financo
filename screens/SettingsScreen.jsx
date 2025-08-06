@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, TouchableOpacity, Switch, ScrollView } from 'react-native';
+import { Text, View, TouchableOpacity, Switch, ScrollView } from 'react-native';
+import { layout, text, buttons, settings, colors } from '../styles/globalStyles';
 
 /**
  * SettingsScreen component - App settings page
@@ -23,225 +24,121 @@ const SettingsScreen = ({ navigation }) => {
     };
 
     return (
-        <ScrollView style={styles.container}>
-            <View style={styles.header}>
-                <Text style={styles.headerTitle}>Settings</Text>
+        <ScrollView style={layout.container}>
+            <View style={layout.headerContainer}>
+                <Text style={text.headerTitle}>Settings</Text>
                 <TouchableOpacity
-                    style={styles.backButton}
+                    style={buttons.secondaryButton}
                     onPress={() => navigation.goBack()}
                 >
-                    <Text style={styles.backButtonText}>← Back</Text>
+                    <Text style={buttons.secondaryButtonText}>← Back</Text>
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.settingsContainer}>
+            <View style={settings.settingsContainer}>
                 {/* Notifications Section */}
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Notifications</Text>
+                <View style={layout.sectionContainer}>
+                    <Text style={text.sectionTitle}>Notifications</Text>
 
-                    <View style={styles.settingRow}>
-                        <View style={styles.settingInfo}>
-                            <Text style={styles.settingLabel}>Push Notifications</Text>
-                            <Text style={styles.settingDescription}>
+                    <View style={settings.settingRow}>
+                        <View style={settings.settingInfo}>
+                            <Text style={settings.settingLabel}>Push Notifications</Text>
+                            <Text style={settings.settingDescription}>
                                 Receive alerts for important updates
                             </Text>
                         </View>
                         <Switch
                             value={notificationsEnabled}
                             onValueChange={(value) => handleToggle(value, setNotificationsEnabled)}
-                            trackColor={{ false: '#e0e0e0', true: '#007AFF' }}
-                            thumbColor={notificationsEnabled ? '#fff' : '#f4f3f4'}
+                            trackColor={{ false: colors.switchTrackFalse, true: colors.switchTrackTrue }}
+                            thumbColor={notificationsEnabled ? colors.switchThumbTrue : colors.switchThumbFalse}
                         />
                     </View>
                 </View>
 
                 {/* Appearance Section */}
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Appearance</Text>
+                <View style={layout.sectionContainer}>
+                    <Text style={text.sectionTitle}>Appearance</Text>
 
-                    <View style={styles.settingRow}>
-                        <View style={styles.settingInfo}>
-                            <Text style={styles.settingLabel}>Dark Mode</Text>
-                            <Text style={styles.settingDescription}>
+                    <View style={settings.settingRow}>
+                        <View style={settings.settingInfo}>
+                            <Text style={settings.settingLabel}>Dark Mode</Text>
+                            <Text style={settings.settingDescription}>
                                 Use dark theme throughout the app
                             </Text>
                         </View>
                         <Switch
                             value={darkModeEnabled}
                             onValueChange={(value) => handleToggle(value, setDarkModeEnabled)}
-                            trackColor={{ false: '#e0e0e0', true: '#007AFF' }}
-                            thumbColor={darkModeEnabled ? '#fff' : '#f4f3f4'}
+                            trackColor={{ false: colors.switchTrackFalse, true: colors.switchTrackTrue }}
+                            thumbColor={darkModeEnabled ? colors.switchThumbTrue : colors.switchThumbFalse}
                         />
                     </View>
                 </View>
 
                 {/* Security Section */}
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Security</Text>
+                <View style={layout.sectionContainer}>
+                    <Text style={text.sectionTitle}>Security</Text>
 
-                    <View style={styles.settingRow}>
-                        <View style={styles.settingInfo}>
-                            <Text style={styles.settingLabel}>Biometric Login</Text>
-                            <Text style={styles.settingDescription}>
+                    <View style={settings.settingRow}>
+                        <View style={settings.settingInfo}>
+                            <Text style={settings.settingLabel}>Biometric Login</Text>
+                            <Text style={settings.settingDescription}>
                                 Use fingerprint or face ID to login
                             </Text>
                         </View>
                         <Switch
                             value={biometricEnabled}
                             onValueChange={(value) => handleToggle(value, setBiometricEnabled)}
-                            trackColor={{ false: '#e0e0e0', true: '#007AFF' }}
-                            thumbColor={biometricEnabled ? '#fff' : '#f4f3f4'}
+                            trackColor={{ false: colors.switchTrackFalse, true: colors.switchTrackTrue }}
+                            thumbColor={biometricEnabled ? colors.switchThumbTrue : colors.switchThumbFalse}
                         />
                     </View>
                 </View>
 
                 {/* Account Actions */}
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>Account</Text>
+                <View style={layout.sectionContainer}>
+                    <Text style={text.sectionTitle}>Account</Text>
 
                     <TouchableOpacity
-                        style={styles.actionButton}
+                        style={buttons.actionButton}
                         onPress={() => alert('Change Password functionality would go here')}
                     >
-                        <Text style={styles.actionButtonText}>Change Password</Text>
+                        <Text style={buttons.actionButtonText}>Change Password</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        style={styles.actionButton}
+                        style={buttons.actionButton}
                         onPress={() => alert('Privacy Policy would open here')}
                     >
-                        <Text style={styles.actionButtonText}>Privacy Policy</Text>
+                        <Text style={buttons.actionButtonText}>Privacy Policy</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity
-                        style={styles.actionButton}
+                        style={buttons.actionButton}
                         onPress={() => alert('Terms of Service would open here')}
                     >
-                        <Text style={styles.actionButtonText}>Terms of Service</Text>
+                        <Text style={buttons.actionButtonText}>Terms of Service</Text>
                     </TouchableOpacity>
                 </View>
 
                 {/* App Info */}
-                <View style={styles.section}>
-                    <Text style={styles.sectionTitle}>App Information</Text>
+                <View style={layout.sectionContainer}>
+                    <Text style={text.sectionTitle}>App Information</Text>
 
-                    <View style={styles.infoRow}>
-                        <Text style={styles.infoLabel}>Version</Text>
-                        <Text style={styles.infoValue}>1.0.0</Text>
+                    <View style={settings.infoRow}>
+                        <Text style={text.label}>Version</Text>
+                        <Text style={text.value}>1.0.0</Text>
                     </View>
 
-                    <View style={styles.infoRow}>
-                        <Text style={styles.infoLabel}>Build</Text>
-                        <Text style={styles.infoValue}>2024.1.1</Text>
+                    <View style={settings.infoRow}>
+                        <Text style={text.label}>Build</Text>
+                        <Text style={text.value}>2024.1.1</Text>
                     </View>
                 </View>
             </View>
         </ScrollView>
     );
 };
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f5f5',
-    },
-    header: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: 20,
-        paddingTop: 60,
-        backgroundColor: '#fff',
-        borderBottomWidth: 1,
-        borderBottomColor: '#e0e0e0',
-    },
-    headerTitle: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        color: '#333',
-    },
-    backButton: {
-        paddingVertical: 8,
-        paddingHorizontal: 12,
-    },
-    backButtonText: {
-        color: '#007AFF',
-        fontSize: 16,
-        fontWeight: '600',
-    },
-    settingsContainer: {
-        padding: 20,
-    },
-    section: {
-        backgroundColor: '#fff',
-        borderRadius: 15,
-        padding: 20,
-        marginBottom: 20,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.1,
-        shadowRadius: 3.84,
-        elevation: 5,
-    },
-    sectionTitle: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        color: '#333',
-        marginBottom: 15,
-    },
-    settingRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        paddingVertical: 15,
-        borderBottomWidth: 1,
-        borderBottomColor: '#f0f0f0',
-    },
-    settingInfo: {
-        flex: 1,
-        marginRight: 15,
-    },
-    settingLabel: {
-        fontSize: 16,
-        fontWeight: '600',
-        color: '#333',
-        marginBottom: 4,
-    },
-    settingDescription: {
-        fontSize: 14,
-        color: '#666',
-        lineHeight: 20,
-    },
-    actionButton: {
-        paddingVertical: 15,
-        borderBottomWidth: 1,
-        borderBottomColor: '#f0f0f0',
-    },
-    actionButtonText: {
-        fontSize: 16,
-        color: '#007AFF',
-        fontWeight: '500',
-    },
-    infoRow: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        paddingVertical: 12,
-        borderBottomWidth: 1,
-        borderBottomColor: '#f0f0f0',
-    },
-    infoLabel: {
-        fontSize: 16,
-        color: '#666',
-        fontWeight: '500',
-    },
-    infoValue: {
-        fontSize: 16,
-        color: '#333',
-        fontWeight: '400',
-    },
-});
 
 export default SettingsScreen; 
